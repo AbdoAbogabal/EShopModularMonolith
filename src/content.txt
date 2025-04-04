@@ -1,0 +1,4 @@
+
+
+Bootstrapper Solution -> contain the entry point of the hole Application
+						 is an Asp.net core Empty
