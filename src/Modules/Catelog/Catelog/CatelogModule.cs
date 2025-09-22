@@ -1,10 +1,10 @@
 ﻿namespace Catelog;
+
 public static class CatelogModule
 {
     public static IServiceCollection AddCatelogModule(this IServiceCollection services,
                                                            IConfiguration configuration)
     {
-
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
@@ -24,7 +24,6 @@ public static class CatelogModule
 
     public static IApplicationBuilder UseCatelogModule(this IApplicationBuilder app)
     {
-
         app.UseMigration<CatelogDbContext>();
 
         return app;
