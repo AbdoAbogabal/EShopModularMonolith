@@ -1,4 +1,4 @@
-﻿namespace Catelog.Products.Features.CreateProduct;
+﻿namespace Catelog.Products.Features.DeleteProduct;
 
 public record DeleteProductRequest(Guid ProductId);
 public record DeleteProductResponse(bool IsSuccess);

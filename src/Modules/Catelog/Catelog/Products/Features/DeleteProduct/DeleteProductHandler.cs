@@ -1,12 +1,14 @@
-﻿namespace Catelog.Products.Features.UpdateProduct;
+﻿namespace Catelog.Products.Features.DeleteProduct;
 
 public record DeleteProductResult(bool IsSuccess);
 
-public class DeleteProductCommandHandler(CatelogDbContext context) : ICommandHandler<DeleteProductCommand, DeleteProductResult>
+public class DeleteProductCommandHandler(CatelogDbContext context,
+                                         IValidator<DeleteProductCommand> validator,
+                                         ILogger<DeleteProductCommandHandler> logger)
+                                         : ICommandHandler<DeleteProductCommand, DeleteProductResult>
 {
     public async Task<DeleteProductResult> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
     {
-
         var product = await context.Products
             .FindAsync([request.Id], cancellationToken);
 

@@ -1,8 +1,9 @@
-﻿namespace Catelog.Products.Features.UpdateProduct;
+﻿namespace Catelog.Products.Features.GetProductByCategory;
 
 public record GetProductsByCategoryResult(List<ProductDto> Products);
 
-public class GetProductsByCategoryQueryHandler(CatelogDbContext context) : IQueryHandler<GetProductsByCategoryQuery, GetProductsByCategoryResult>
+public class GetProductsByCategoryQueryHandler(CatelogDbContext context)
+                                               : IQueryHandler<GetProductsByCategoryQuery, GetProductsByCategoryResult>
 {
     public async Task<GetProductsByCategoryResult> Handle(GetProductsByCategoryQuery request, CancellationToken cancellationToken)
     {

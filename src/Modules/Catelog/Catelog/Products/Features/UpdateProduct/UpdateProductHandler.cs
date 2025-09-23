@@ -2,11 +2,13 @@
 
 public record UpdateProductResult(bool IsSuccess);
 
-public class UpdateProductCommandHandler(CatelogDbContext context) : ICommandHandler<UpdateProductCommand, UpdateProductResult>
+public class UpdateProductCommandHandler(CatelogDbContext context,
+                                         IValidator<UpdateProductCommand> validator,
+                                         ILogger<UpdateProductCommandHandler> logger)
+                                         : ICommandHandler<UpdateProductCommand, UpdateProductResult>
 {
     public async Task<UpdateProductResult> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
-
         var oldProduct = await context.Products
             .FindAsync([request.Product.Id], cancellationToken);
 

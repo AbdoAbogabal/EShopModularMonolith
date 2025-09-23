@@ -5,7 +5,13 @@ public static class CatelogModule
     public static IServiceCollection AddCatelogModule(this IServiceCollection services,
                                                            IConfiguration configuration)
     {
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            cfg.AddOpenBehavior(typeof(ValidationBehaviors<,>));
+        });
+
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispathDomainEventInterceptor>();

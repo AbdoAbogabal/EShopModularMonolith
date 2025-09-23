@@ -1,4 +1,4 @@
-﻿namespace Catelog.Products.Features.CreateProduct;
+﻿namespace Catelog.Products.Features.GetProductById;
 
 public record GetProductByIdResponse(ProductDto Product);
 
@@ -14,7 +14,7 @@ public class GetProductByIdEndpoint : ICarterModule
 
             return Results.Ok(response);
         }).WithName("GetProductById")
-          .Produces<DeleteProductResponse>(StatusCodes.Status200OK)
+          .Produces<GetProductByIdResponse>(StatusCodes.Status200OK)
           .ProducesProblem(StatusCodes.Status400BadRequest)
           .WithSummary("Get Product By Id")
           .WithDescription("Get Product By Id");

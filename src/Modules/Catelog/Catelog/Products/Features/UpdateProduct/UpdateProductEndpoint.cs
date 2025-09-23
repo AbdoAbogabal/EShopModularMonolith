@@ -1,4 +1,4 @@
-﻿namespace Catelog.Products.Features.CreateProduct;
+﻿namespace Catelog.Products.Features.UpdateProduct;
 
 public record UpdateProductRequest(ProductDto Product);
 public record UpdateProductResponse(bool IsSuccess);

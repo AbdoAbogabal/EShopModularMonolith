@@ -1,4 +1,4 @@
-﻿namespace Catelog.Products.Features.UpdateProduct;
+﻿namespace Catelog.Products.Features.GetProduct;
 
 public record GetProductsResult(List<ProductDto> Products);
 
