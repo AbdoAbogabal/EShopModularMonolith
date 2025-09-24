@@ -7,11 +7,13 @@ public class GetProductsByIdQueryHandler(CatelogDbContext context)
 {
     public async Task<GetProductsByIdResult> Handle(GetProductsByIdQuery request, CancellationToken cancellationToken)
     {
-        var products = await context.Products
-                                    .AsNoTracking()
-                                    .FirstOrDefaultAsync(e => e.Id.Equals(request.Id), cancellationToken);
+        var product = await context.Products
+                                   .AsNoTracking()
+                                   .FirstOrDefaultAsync(e => e.Id.Equals(request.Id), cancellationToken);
 
-        var productDto = products.Adapt<ProductDto>();
+        if (product == null) throw new ProductNotFoundException(request.Id);
+
+        var productDto = product.Adapt<ProductDto>();
 
         return new GetProductsByIdResult(productDto);
     }

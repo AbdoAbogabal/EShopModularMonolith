@@ -12,7 +12,7 @@ public class DeleteProductCommandHandler(CatelogDbContext context,
         var product = await context.Products
             .FindAsync([request.Id], cancellationToken);
 
-        if (product == null) throw new Exception($"Product not found: {product.Id}");
+        if (product == null) throw new ProductNotFoundException(request.Id);
 
         context.Products.Remove(product);
 

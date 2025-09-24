@@ -12,7 +12,7 @@ public class UpdateProductCommandHandler(CatelogDbContext context,
         var oldProduct = await context.Products
             .FindAsync([request.Product.Id], cancellationToken);
 
-        if (oldProduct == null) throw new Exception($"Product not found: {oldProduct.Id}");
+        if (oldProduct == null) throw new ProductNotFoundException(oldProduct.Id);
 
         UpdateProduct(request, oldProduct);
 

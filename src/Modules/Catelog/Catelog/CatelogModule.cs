@@ -9,6 +9,7 @@ public static class CatelogModule
         {
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             cfg.AddOpenBehavior(typeof(ValidationBehaviors<,>));
+            cfg.AddOpenBehavior(typeof(LoggerBehaviors<,>));
         });
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

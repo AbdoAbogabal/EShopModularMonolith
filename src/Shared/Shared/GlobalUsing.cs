@@ -10,6 +10,7 @@ global using Microsoft.EntityFrameworkCore.Diagnostics;
 global using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 global using System.Reflection;
+global using System.Diagnostics;
 
 global using Carter;
 global using MediatR;

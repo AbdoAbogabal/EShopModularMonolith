@@ -6,6 +6,7 @@ public class UpdateProductValidator : AbstractValidator<UpdateProductCommand>
     {
         RuleFor(x => x.Product).NotNull();
 
+        RuleFor(x => x.Product.Id).NotEmpty().WithMessage("Id is required");
         RuleFor(x => x.Product.Price).GreaterThan(0).WithMessage("Price must be greater than 0");
 
         RuleFor(x => x.Product.Categories).NotEmpty().WithMessage("categories is required.");
