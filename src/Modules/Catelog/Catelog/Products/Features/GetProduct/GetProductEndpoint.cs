@@ -1,15 +1,15 @@
 ﻿namespace Catelog.Products.Features.GetProduct;
 
 public record GetProductRequest();
-public record GetProductResponse(List<ProductDto> Products);
+public record GetProductResponse(PaginatedResult<ProductDto> Products);
 
 public class GetProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (ISender sender) =>
+        app.MapGet("/products", async ([AsParameters] PaginatedRequest paginatedRequest, ISender sender) =>
         {
-            var result = await sender.Send(new GetProductsQuery());
+            var result = await sender.Send(new GetProductsQuery(paginatedRequest));
 
             var response = result.Adapt<GetProductsResult>();
 

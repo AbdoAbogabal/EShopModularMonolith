@@ -5,6 +5,7 @@ global using Shared.Data;
 global using Catelog.Data;
 global using Shared.Behaviors;
 global using Shared.Data.Seed;
+global using Shared.Pagination;
 global using Catelog.Data.Seed;
 global using Shared.Exceptions;
 global using Shared.Interceptor;
