@@ -1,15 +1,10 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Shared.Exceptions.Handler;
+﻿namespace Shared.Exceptions.Handler;
 
 public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger) : IExceptionHandler
 {
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
         logger.LogError($"Error Message: {exception.Message},Time occure {DateTime.UtcNow}");
-
 
         (string Detail, string Title, int StatusCode) errorDetails = exception switch
         {

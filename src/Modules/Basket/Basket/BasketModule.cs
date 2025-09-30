@@ -3,8 +3,11 @@
 public static class BasketModule
 {
     public static IServiceCollection AddBasketModule(this IServiceCollection services,
-                                                           IConfiguration configuration)
+                                                          IConfiguration configuration)
     {
+
+        services.AddScoped<IBasketRepository, BasketRepository>();
+        services.Decorate<IBasketRepository, CachedBasketRepository>();
 
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispathDomainEventInterceptor>();

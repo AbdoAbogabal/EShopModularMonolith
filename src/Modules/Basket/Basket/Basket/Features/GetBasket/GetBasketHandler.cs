@@ -2,18 +2,12 @@
 
 public record GetBasketResult(ShoppingCartDto ShoppingCart);
 
-public class GetBasketHandler(BasketDbContext context)
+public class GetBasketHandler(IBasketRepository basketRepository)
            : IQueryHandler<GetBasketQuery, GetBasketResult>
 {
     public async Task<GetBasketResult> Handle(GetBasketQuery request, CancellationToken cancellationToken)
     {
-        var basket = await context.ShoppingCarts
-                                  .AsNoTracking()
-                                  .Include(s => s.Items)
-                                  .SingleOrDefaultAsync(e => e.UserName.Equals(request.UserName), cancellationToken);
-
-        if (basket is null)
-            throw new BasketNotFoundException(request.UserName);
+        var basket = await basketRepository.GetBasket(request.UserName, true, cancellationToken);
 
         var basketDto = basket.Adapt<ShoppingCartDto>();
 

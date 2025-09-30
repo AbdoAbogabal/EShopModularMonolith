@@ -10,6 +10,9 @@ services:
  eshopdb:
   image: postgres
  
+ distriputedcache:
+  image: redis
+
  seq:
     image: datalust/seq:latest
 

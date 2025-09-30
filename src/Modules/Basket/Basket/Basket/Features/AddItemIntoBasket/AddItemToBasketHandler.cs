@@ -2,17 +2,12 @@
 
 public record AddItemToBasketResult(Guid Id);
 
-public class AddItemToBasketHandler(BasketDbContext context)
+public class AddItemToBasketHandler(IBasketRepository basketRepository)
     : ICommandHandler<AddItemToBasketCommand, AddItemToBasketResult>
 {
     public async Task<AddItemToBasketResult> Handle(AddItemToBasketCommand request, CancellationToken cancellationToken)
     {
-        var shoppingCart = await context.ShoppingCarts
-                                        .Include(x => x.Items)
-                                        .SingleOrDefaultAsync(x => x.UserName == request.UserName, cancellationToken);
-
-        if (shoppingCart is null)
-            throw new BasketNotFoundException(request.UserName);
+        var shoppingCart = await basketRepository.GetBasket(request.UserName, false, cancellationToken);
 
         shoppingCart.AddItem(request.ShoppingCartItem.ProductId,
                              request.ShoppingCartItem.Quantity,
@@ -20,7 +15,7 @@ public class AddItemToBasketHandler(BasketDbContext context)
                              request.ShoppingCartItem.Price,
                              request.ShoppingCartItem.ProductName);
 
-        await context.SaveChangesAsync(cancellationToken);
+        await basketRepository.SaveChangesAsync(request.UserName, cancellationToken);
 
         return new AddItemToBasketResult(shoppingCart.Id);
     }
