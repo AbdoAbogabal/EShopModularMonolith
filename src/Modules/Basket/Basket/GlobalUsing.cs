@@ -11,6 +11,7 @@ global using Basket.Basket.Dtos;
 global using Basket.Basket.Models;
 global using Basket.Data.Repository;
 global using Basket.Basket.Exceptions;
+global using Basket.Data.JsonConverters;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
@@ -24,6 +25,7 @@ global using Microsoft.EntityFrameworkCore.Diagnostics;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 global using System.Text.Json;
+global using System.Text.Json.Serialization;
 
 global using Carter;
 global using Mapster;

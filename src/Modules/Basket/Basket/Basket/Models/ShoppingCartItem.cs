@@ -1,4 +1,6 @@
-﻿namespace Basket.Basket.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace Basket.Basket.Models;
 
 public class ShoppingCartItem : Entity<Guid>
 {
@@ -14,6 +16,18 @@ public class ShoppingCartItem : Entity<Guid>
     //[HINT] made internal so that only the ShoppingCart Class can create instances of this class
     internal ShoppingCartItem(Guid shoppingCartId, Guid productId, int quantity, string color, decimal price, string productName)
     {
+        Color = color;
+        Price = price;
+        Quantity = quantity;
+        ProductId = productId;
+        ProductName = productName;
+        ShoppingCartId = shoppingCartId;
+    }
+
+    [JsonConstructor]
+    public ShoppingCartItem(Guid id, Guid shoppingCartId, Guid productId, int quantity, string color, decimal price, string productName)
+    {
+        Id = id;
         Color = color;
         Price = price;
         Quantity = quantity;
