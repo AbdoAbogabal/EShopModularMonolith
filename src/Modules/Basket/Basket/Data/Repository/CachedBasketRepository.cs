@@ -17,7 +17,7 @@ public class CachedBasketRepository(IBasketRepository repository,
             return await repository.GetBasket(userName, asNoTraking, cancellationToken);
 
         var basket = await cache.GetStringAsync(userName, cancellationToken);
-        if (string.IsNullOrEmpty(basket))
+        if (!string.IsNullOrEmpty(basket))
             return JsonSerializer.Deserialize<ShoppingCart>(basket, _options)!;
 
         var cachedbasket = await repository.GetBasket(userName, asNoTraking, cancellationToken);

@@ -1,8 +1,8 @@
 ﻿
 global using Shared.DDD;
-global using Shared.CQRS;
 global using Shared.Data.Seed;
 global using Shared.Behaviors;
+global using Shared.Contracts.CQRS;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;

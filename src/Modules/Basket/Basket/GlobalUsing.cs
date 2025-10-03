@@ -1,7 +1,6 @@
 ﻿
 global using Shared.DDD;
 global using Basket.Data;
-global using Shared.CQRS;
 global using Shared.Data;
 global using Shared.Behaviors;
 global using System.Reflection;
@@ -9,9 +8,11 @@ global using Shared.Exceptions;
 global using Shared.Interceptor;
 global using Basket.Basket.Dtos;
 global using Basket.Basket.Models;
+global using Shared.Contracts.CQRS;
 global using Basket.Data.Repository;
 global using Basket.Basket.Exceptions;
 global using Basket.Data.JsonConverters;
+global using Catelog.Contracts.Products.Features.GetProductById;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;

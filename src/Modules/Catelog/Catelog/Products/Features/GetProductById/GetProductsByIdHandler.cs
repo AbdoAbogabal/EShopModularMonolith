@@ -1,6 +1,5 @@
 ﻿namespace Catelog.Products.Features.GetProductById;
 
-public record GetProductsByIdResult(ProductDto Product);
 
 public class GetProductsByIdQueryHandler(CatelogDbContext context)
                                          : IQueryHandler<GetProductsByIdQuery, GetProductsByIdResult>

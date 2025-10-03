@@ -1,6 +1,4 @@
-﻿using Catelog.Products.Events;
-
-namespace Catelog.Products.Models;
+﻿namespace Catelog.Products.Models;
 
 public class Product : Aggregate<Guid>
 {
