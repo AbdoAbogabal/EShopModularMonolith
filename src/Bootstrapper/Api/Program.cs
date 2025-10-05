@@ -2,7 +2,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration));
 
-
 var basketAssembly = typeof(BasketModule).Assembly;
 var catelogAssembly = typeof(CatelogModule).Assembly;
 
@@ -12,10 +11,9 @@ builder.Services.AddCarterWithAssemplies(basketAssembly, catelogAssembly);
 
 var config = builder.Configuration;
 
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = config.GetConnectionString("Redis");
-});
+builder.Services.AddStackExchangeRedisCache(options => options.Configuration = config.GetConnectionString("Redis"));
+
+builder.Services.AddMassTransitWithAssemplies(config, basketAssembly, catelogAssembly);
 
 builder.Services.AddBasketModule(config)
                 .AddCatelogModule(config)

@@ -1,5 +1,4 @@
-﻿
-global using Shared.DDD;
+﻿global using Shared.DDD;
 global using Basket.Data;
 global using Shared.Data;
 global using Shared.Behaviors;
@@ -10,14 +9,17 @@ global using Basket.Basket.Dtos;
 global using Basket.Basket.Models;
 global using Shared.Contracts.CQRS;
 global using Basket.Data.Repository;
+global using Shared.Messaging.Events;
 global using Basket.Basket.Exceptions;
 global using Basket.Data.JsonConverters;
+global using Basket.Basket.Features.UpdateItemPriceInBasket;
 global using Catelog.Contracts.Products.Features.GetProductById;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Routing;
 global using Microsoft.AspNetCore.Builder;
+global using Microsoft.Extensions.Logging;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Caching.Distributed;
@@ -30,5 +32,6 @@ global using System.Text.Json.Serialization;
 
 global using Carter;
 global using Mapster;
+global using MassTransit;
 global using MediatR;
 global using FluentValidation;

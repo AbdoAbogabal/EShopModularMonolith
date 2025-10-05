@@ -4,6 +4,7 @@ global using Ordering;
 global using Shared.Behaviors;
 global using Shared.Extentions;
 global using Shared.Exceptions.Handler;
+global using Shared.Messaging.Extentions;
 
 global using Carter;
 global using Serilog;

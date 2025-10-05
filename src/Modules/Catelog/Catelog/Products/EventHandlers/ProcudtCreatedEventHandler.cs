@@ -1,5 +1,4 @@
-﻿
-namespace Catelog.Products.EventHandlers;
+﻿namespace Catelog.Products.EventHandlers;
 
 public class ProcudtCreatedEventHandler(ILogger<ProcudtCreatedEventHandler> logger)
     : INotificationHandler<ProductCreatedEvent>

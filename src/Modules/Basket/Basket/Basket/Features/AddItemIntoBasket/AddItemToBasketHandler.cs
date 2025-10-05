@@ -1,4 +1,4 @@
-﻿ namespace Basket.Basket.Features.AddItemIntoBasket;
+﻿namespace Basket.Basket.Features.AddItemIntoBasket;
 
 public record AddItemToBasketResult(Guid Id);
 

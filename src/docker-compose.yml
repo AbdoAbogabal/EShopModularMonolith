@@ -16,5 +16,8 @@ services:
  seq:
     image: datalust/seq:latest
 
+ messagebroker:
+  image: rabbitmq:management
+
 volumes:
   postgres_eshopdb:
