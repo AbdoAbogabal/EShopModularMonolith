@@ -9,3 +9,4 @@ global using Shared.Messaging.Extentions;
 global using Carter;
 global using Serilog;
 global using FluentValidation;
+global using Keycloak.AuthServices.Authentication;

@@ -15,6 +15,9 @@ builder.Services.AddStackExchangeRedisCache(options => options.Configuration = c
 
 builder.Services.AddMassTransitWithAssemplies(config, basketAssembly, catelogAssembly);
 
+builder.Services.AddKeycloakWebApiAuthentication(config);
+builder.Services.AddAuthorization();
+
 builder.Services.AddBasketModule(config)
                 .AddCatelogModule(config)
                 .AddOrderingModule(config);
@@ -27,9 +30,11 @@ app.MapCarter();
 app.UseSerilogRequestLogging();
 app.UseExceptionHandler(options => { });
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseBasketModule()
    .UseCatelogModule()
    .UseOrderingModule();
-
 
 app.Run();

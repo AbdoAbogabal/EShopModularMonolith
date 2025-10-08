@@ -22,6 +22,7 @@ public class AddItemToBasketEndPoint : ICarterModule
         }).Produces<AddItemToBasketResponse>(StatusCodes.Status201Created)
           .ProducesProblem(StatusCodes.Status400BadRequest)
           .WithSummary("Add Item To Basket")
-          .WithDescription("Add Item To Basket");
+          .WithDescription("Add Item To Basket")
+          .RequireAuthorization();
     }
 }
