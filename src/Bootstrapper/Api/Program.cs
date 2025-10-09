@@ -4,10 +4,11 @@ builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(conte
 
 var basketAssembly = typeof(BasketModule).Assembly;
 var catelogAssembly = typeof(CatelogModule).Assembly;
+var orderingAssembly = typeof(OrderingModule).Assembly;
 
-builder.Services.AddMediatRWithAssemplies(basketAssembly, catelogAssembly);
+builder.Services.AddMediatRWithAssemplies(basketAssembly, catelogAssembly, orderingAssembly);
 
-builder.Services.AddCarterWithAssemplies(basketAssembly, catelogAssembly);
+builder.Services.AddCarterWithAssemplies(basketAssembly, catelogAssembly, orderingAssembly);
 
 var config = builder.Configuration;
 
