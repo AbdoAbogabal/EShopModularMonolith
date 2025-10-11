@@ -1,4 +1,5 @@
 ﻿
+
 global using Shared.DDD;
 global using Shared.Data;
 global using Ordering.Data;
@@ -6,10 +7,12 @@ global using Shared.Pagination;
 global using Shared.Interceptor;
 global using Ordering.Orders.DTOS;
 global using Shared.Contracts.CQRS;
-global using Ordering.Orders.Events;
 global using Ordering.Orders.Models;
+global using Ordering.Orders.Events;
+global using Shared.Messaging.Events;
 global using Ordering.Orders.Exceptions;
 global using Ordering.Orders.ValueObjects;
+global using Ordering.Orders.Features.CreateOrder;
 global using Ordering.Orders.Features.GetOrders;
 global using Ordering.Orders.Features.DeleteOrder;
 
@@ -28,4 +31,5 @@ global using System.Reflection;
 global using Carter;
 global using MediatR;
 global using Mapster;
+global using MassTransit;
 global using FluentValidation;

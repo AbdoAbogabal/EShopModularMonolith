@@ -19,6 +19,8 @@ public static class BasketModule
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
         });
 
+        services.AddHostedService<OutboxProcessor>();
+
         return services;
     }
 

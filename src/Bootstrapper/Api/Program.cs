@@ -14,7 +14,7 @@ var config = builder.Configuration;
 
 builder.Services.AddStackExchangeRedisCache(options => options.Configuration = config.GetConnectionString("Redis"));
 
-builder.Services.AddMassTransitWithAssemplies(config, basketAssembly, catelogAssembly);
+builder.Services.AddMassTransitWithAssemplies(config, basketAssembly, catelogAssembly, orderingAssembly);
 
 builder.Services.AddKeycloakWebApiAuthentication(config);
 builder.Services.AddAuthorization();

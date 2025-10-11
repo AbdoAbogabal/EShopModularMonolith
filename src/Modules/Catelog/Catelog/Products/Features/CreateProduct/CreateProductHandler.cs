@@ -2,9 +2,7 @@
 
 public record CreateProductResult(Guid ProductId);
 
-public class CreateProductCommandHandler(CatelogDbContext context,
-                                         IValidator<CreateProductCommand> validator,
-                                         ILogger<CreateProductCommandHandler> logger)
+public class CreateProductCommandHandler(CatelogDbContext context)
                                          : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
     public async Task<CreateProductResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)

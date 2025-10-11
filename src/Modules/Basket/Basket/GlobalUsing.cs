@@ -9,6 +9,7 @@ global using Basket.Basket.Dtos;
 global using Basket.Basket.Models;
 global using Shared.Contracts.CQRS;
 global using Basket.Data.Repository;
+global using Basket.Data.Processors;
 global using Shared.Messaging.Events;
 global using Basket.Basket.Exceptions;
 global using Basket.Data.JsonConverters;
@@ -17,6 +18,7 @@ global using Catelog.Contracts.Products.Features.GetProductById;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Hosting;
 global using Microsoft.AspNetCore.Routing;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.Extensions.Logging;

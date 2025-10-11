@@ -12,7 +12,7 @@ public class CreateOrderCommandHandler
 
         context.Orders.Add(order);
 
-        await context.SaveChangesAsync();
+        await context.SaveChangesAsync(cancellationToken);
 
         return new CreateOrderResult(order.Id);
     }
@@ -33,7 +33,6 @@ public class CreateOrderCommandHandler
 
         foreach (var item in orderDto.Items)
             newOrder.AddProduct(item.ProductId, item.Quantity, item.Price);
-
 
         return newOrder;
     }

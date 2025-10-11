@@ -6,6 +6,7 @@ public class BasketDbContext : DbContext
         : base(options) { }
 
     public DbSet<ShoppingCart> ShoppingCarts => Set<ShoppingCart>();
+    public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();
     public DbSet<ShoppingCartItem> ShoppingCartItems => Set<ShoppingCartItem>();
 
     protected override void OnModelCreating(ModelBuilder builder)
