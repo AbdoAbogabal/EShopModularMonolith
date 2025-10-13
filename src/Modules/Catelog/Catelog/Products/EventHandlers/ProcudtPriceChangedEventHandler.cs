@@ -1,5 +1,4 @@
-﻿
-namespace Catelog.Products.EventHandlers;
+﻿namespace Catelog.Products.EventHandlers;
 
 public class ProcudtPriceChangedEventHandler(ILogger<ProcudtPriceChangedEventHandler> logger, IBus bus)
     : INotificationHandler<ProductPriceChangedEvent>

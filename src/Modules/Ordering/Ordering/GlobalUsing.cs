@@ -11,6 +11,7 @@ global using Ordering.Orders.Models;
 global using Ordering.Orders.Events;
 global using Shared.Messaging.Events;
 global using Ordering.Orders.Exceptions;
+global using Ordering.Data.Repositories;
 global using Ordering.Orders.ValueObjects;
 global using Ordering.Orders.Features.CreateOrder;
 global using Ordering.Orders.Features.GetOrders;

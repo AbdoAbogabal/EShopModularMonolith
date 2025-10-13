@@ -3,16 +3,12 @@
 public record GetOrderByIdResult(OrderDto Order);
 
 public class GetOrderByIdQueryHandler
-            (OrderingDbContext context)
+            (IOrderRepository orderRepository)
     : IQueryHandler<GetOrderByIdQuery, GetOrderByIdResult>
 {
     public async Task<GetOrderByIdResult> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
     {
-        var order = await context.Orders.AsNoTracking()
-                                         .Include(e => e.Items)
-                                         .SingleOrDefaultAsync(e => e.Id.Equals(request.OrderId), cancellationToken);
-
-        if (order is null) throw new OrderNotFoundException(request.OrderId);
+        var order = await orderRepository.GetOrderById(request.OrderId, cancellationToken);
 
         var orderDto = order.Adapt<OrderDto>();
 

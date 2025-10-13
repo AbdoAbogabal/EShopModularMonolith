@@ -3,18 +3,13 @@
 public record DeleteOrderResult(bool IsSuccess);
 
 public class DeleteOrderCommandHandler
-            (OrderingDbContext context)
+            (IOrderRepository orderRepository)
             : ICommandHandler<DeleteOrderCommand, DeleteOrderResult>
 {
     public async Task<DeleteOrderResult> Handle(DeleteOrderCommand command, CancellationToken cancellationToken)
     {
-        var order = await context.Orders.FindAsync([command.OrderId], cancellationToken);
+        bool isSuccess = await orderRepository.DeleteOrder(command.OrderId, cancellationToken);
 
-        if (order is null) throw new OrderNotFoundException(command.OrderId);
-
-        context.Orders.Remove(order);
-        await context.SaveChangesAsync(cancellationToken);
-        return new DeleteOrderResult(true);
-
+        return new DeleteOrderResult(isSuccess);
     }
 }

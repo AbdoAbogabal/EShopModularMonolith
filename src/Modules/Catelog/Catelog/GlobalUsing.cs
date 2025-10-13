@@ -2,7 +2,6 @@
 global using Shared.DDD;
 global using Shared.Data;
 global using Catelog.Data;
-global using Shared.Behaviors;
 global using Shared.Data.Seed;
 global using Shared.Pagination;
 global using Catelog.Data.Seed;
@@ -12,9 +11,11 @@ global using Shared.Contracts.CQRS;
 global using Shared.Messaging.Events;
 global using Catelog.Products.Events;
 global using Catelog.Products.Models;
+global using Catelog.Data.Repositories;
 global using Catelog.Products.Exceptions;
 global using Catelog.Contracts.Products.DTOS;
 global using Catelog.Products.Features.UpdateProduct;
+global using Catelog.Products.Features.CreateProduct;
 global using Catelog.Contracts.Products.Features.GetProductById;
 
 global using Microsoft.AspNetCore.Http;

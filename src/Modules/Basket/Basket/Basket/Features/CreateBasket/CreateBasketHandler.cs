@@ -14,10 +14,10 @@ public class CreateBasketHandler(IBasketRepository basketRepository)
         return new CreateBasketResult(shoppingCart.Id);
     }
 
-    private ShoppingCart CreateNewBasket(ShoppingCartDto shoppingCart)
+    private static ShoppingCart CreateNewBasket(ShoppingCartDto shoppingCart)
     {
 
-        var newBasket = ShoppingCart.CreateNew(shoppingCart.Id, shoppingCart.UserName);
+        var newBasket = ShoppingCart.Create(shoppingCart.Id, shoppingCart.UserName);
 
         shoppingCart.Items.ForEach(item =>
                                   newBasket.AddItem(item.ProductId,

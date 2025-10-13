@@ -8,6 +8,7 @@ public class Payment
     public string Expiration { get; } = default!;
 
     public int PaymentMethod { get; } = default!;
+
     protected Payment() { }
 
     private Payment(string cvv, string cardName, string cardNumber, string expiration, int paymentMethod)

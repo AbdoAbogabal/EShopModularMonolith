@@ -13,7 +13,6 @@ public static class CarterExtentions
 
                 config.WithModules(modules);
             }
-
         });
     }
 }

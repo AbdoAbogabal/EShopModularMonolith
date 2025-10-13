@@ -8,8 +8,7 @@ public class ShoppingCart : Aggregate<Guid>
     public IReadOnlyList<ShoppingCartItem> Items => _items.AsReadOnly();
     public decimal TotalPrice => Items.Sum(item => item.Price * item.Quantity);
 
-
-    public static ShoppingCart CreateNew(Guid id, string userName)
+    public static ShoppingCart Create(Guid id, string userName)
     {
         ArgumentNullException.ThrowIfNullOrEmpty(userName);
 

@@ -5,7 +5,7 @@ public static class OrderingModule
     public static IServiceCollection AddOrderingModule(this IServiceCollection services,
                                                            IConfiguration configuration)
     {
-
+        services.AddScoped<IOrderRepository, OrderRepository>();
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispathDomainEventInterceptor>();
 

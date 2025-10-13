@@ -6,10 +6,13 @@ public class Order : Aggregate<Guid>
     public IReadOnlyList<OrderItem> Items => _items.AsReadOnly();
 
     public Guid CustomerId { get; private set; } = default!;
+    
     public string OrderName { get; private set; } = default!;
+
+    public Payment Payment { get; private set; } = default!;
     public Address ShippingAddress { get; private set; } = default!;
     public Address BillingAddress { get; private set; } = default!;
-    public Payment Payment { get; private set; } = default!;
+
     public decimal TotalPrice => _items.Sum(e => e.Price * e.Quantity);
 
     public static Order Create(Guid id, Guid customerId, string orderName, Address shippingAddress, Address billingAddress, Payment payment)
@@ -50,6 +53,4 @@ public class Order : Aggregate<Guid>
         if (item is not null)
             _items.Remove(item);
     }
-
-
 }

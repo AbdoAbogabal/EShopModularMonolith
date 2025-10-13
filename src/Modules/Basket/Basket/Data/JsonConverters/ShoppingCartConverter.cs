@@ -7,7 +7,6 @@ public class ShoppingCartConverter : JsonConverter<ShoppingCart>
                                        Type typeToConvert,
                                        JsonSerializerOptions options)
     {
-
         var jsonDocument = JsonDocument.ParseValue(ref reader);
         var rootElement = jsonDocument.RootElement;
 
@@ -15,7 +14,7 @@ public class ShoppingCartConverter : JsonConverter<ShoppingCart>
         var itemsElement = rootElement.GetProperty("items");
         var userName = rootElement.GetProperty("userName").GetString()!;
 
-        var shoppingCart = ShoppingCart.CreateNew(id, userName);
+        var shoppingCart = ShoppingCart.Create(id, userName);
 
         var items = itemsElement.Deserialize<List<ShoppingCartItem>>(options);
         if (items != null)

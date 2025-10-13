@@ -22,8 +22,8 @@ public class DispathDomainEventInterceptor(IMediator mediator)
         if (context is null) return;
 
         var aggregates = context.ChangeTracker.Entries<IAggregate>()
-                                             .Where(e => e.Entity.DomainEvents.Any())
-                                             .Select(e => e.Entity);
+                                              .Where(e => e.Entity.DomainEvents.Any())
+                                              .Select(e => e.Entity);
 
         var domainEvents = aggregates.SelectMany(e => e.DomainEvents).ToList();
 

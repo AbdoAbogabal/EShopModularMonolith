@@ -5,6 +5,7 @@ public static class CatelogModule
     public static IServiceCollection AddCatelogModule(this IServiceCollection services,
                                                            IConfiguration configuration)
     {
+        services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispathDomainEventInterceptor>();
 

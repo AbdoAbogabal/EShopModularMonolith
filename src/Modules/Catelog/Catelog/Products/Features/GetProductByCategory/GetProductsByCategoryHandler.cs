@@ -2,15 +2,12 @@
 
 public record GetProductsByCategoryResult(List<ProductDto> Products);
 
-public class GetProductsByCategoryQueryHandler(CatelogDbContext context)
+public class GetProductsByCategoryQueryHandler(IProductRepository productRepository)
                                                : IQueryHandler<GetProductsByCategoryQuery, GetProductsByCategoryResult>
 {
     public async Task<GetProductsByCategoryResult> Handle(GetProductsByCategoryQuery request, CancellationToken cancellationToken)
     {
-        var products = await context.Products
-                                    .AsNoTracking()
-                                    .Where(e => e.Categories.Contains(request.Category))
-                                    .ToListAsync(cancellationToken);
+        var products = await productRepository.GetProductsByCategories(request.Category, cancellationToken);
 
         var productsDto = products.Adapt<List<ProductDto>>();
 

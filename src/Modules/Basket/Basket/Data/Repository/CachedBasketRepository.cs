@@ -1,8 +1,7 @@
 ﻿namespace Basket.Data.Repository;
 
 public class CachedBasketRepository(IBasketRepository repository,
-                                    IDistributedCache cache)
-          : IBasketRepository
+                                    IDistributedCache cache) : IBasketRepository
 {
 
     private readonly JsonSerializerOptions _options = new JsonSerializerOptions
@@ -11,6 +10,7 @@ public class CachedBasketRepository(IBasketRepository repository,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         Converters = { new ShoppingCartConverter(), new ShoppingCartItemConverter() }
     };
+
     public async Task<ShoppingCart> GetBasket(string userName, bool asNoTraking, CancellationToken cancellationToken = default)
     {
         if (!asNoTraking)
@@ -44,7 +44,6 @@ public class CachedBasketRepository(IBasketRepository repository,
 
         return true;
     }
-
 
     public async Task<int> SaveChangesAsync(string? userName = null, CancellationToken cancellationToken = default)
     {

@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
+var config = builder.Configuration;
+
 builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration));
 
 var basketAssembly = typeof(BasketModule).Assembly;
@@ -10,11 +12,9 @@ builder.Services.AddMediatRWithAssemplies(basketAssembly, catelogAssembly, order
 
 builder.Services.AddCarterWithAssemplies(basketAssembly, catelogAssembly, orderingAssembly);
 
-var config = builder.Configuration;
+builder.Services.AddMassTransitWithAssemplies(config, basketAssembly, catelogAssembly, orderingAssembly);
 
 builder.Services.AddStackExchangeRedisCache(options => options.Configuration = config.GetConnectionString("Redis"));
-
-builder.Services.AddMassTransitWithAssemplies(config, basketAssembly, catelogAssembly, orderingAssembly);
 
 builder.Services.AddKeycloakWebApiAuthentication(config);
 builder.Services.AddAuthorization();

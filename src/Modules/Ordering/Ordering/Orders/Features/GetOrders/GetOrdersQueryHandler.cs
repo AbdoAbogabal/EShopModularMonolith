@@ -3,7 +3,7 @@
 public record GetOrderResult(PaginatedResult<OrderDto> Orders);
 
 public class GetOrdersQueryHandler
-            (OrderingDbContext context)
+            (IOrderRepository orderRepository)
     : IQueryHandler<GetOrderQuery, GetOrderResult>
 {
     public async Task<GetOrderResult> Handle(GetOrderQuery request, CancellationToken cancellationToken)
@@ -11,13 +11,9 @@ public class GetOrdersQueryHandler
         var pageSize = request.PaginatedRequest.PageSize;
         var pageNumber = request.PaginatedRequest.PageNumber;
 
-        var totalCount = await context.Orders.LongCountAsync(cancellationToken);
+        var totalCount = await orderRepository.GetCount(cancellationToken);
 
-        var orders = await context.Orders.AsNoTracking()
-                                         .Include(e => e.Items)
-                                         .Skip(pageSize * pageNumber)
-                                         .Take(pageSize)
-                                         .ToListAsync(cancellationToken);
+        var orders = await orderRepository.GetOrders(pageSize, pageNumber, cancellationToken);
 
         var ordersDto = orders.Adapt<List<OrderDto>>();
 
